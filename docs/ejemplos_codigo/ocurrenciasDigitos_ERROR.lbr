@@ -1,0 +1,20 @@
+Func frecuencia {Entero numero, Entero digito} -> 
+
+    LOC Entero cantidad <=> 0;
+    LOC Entero ultimo_digito <=> 0;
+
+    Rep {numero ~== 0 ->
+        ultimo_digito <=> Operar numero % 10;
+
+        Si {ultimo_digito == digito} -> 
+
+            cantidad <=> Operar cantidad + 1;
+        <-
+        numero <=> Operar numero // 10;
+    <-
+    messirve cantidad ;
+<-
+
+
+    
+

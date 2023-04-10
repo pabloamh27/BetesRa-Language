@@ -1,0 +1,16 @@
+Func sumaDigitos{Entero numero} -> 
+    LOC Entero suma <=> 0;
+    LOC Entero digito <=> 0;
+    Rep {numero ~== 0} ->
+        digito <=> Operar numero % 10;    
+        suma <=> Operar suma + digito;
+        numero <=> Operar numero // 10;
+    <-
+    messirve suma;
+<-
+
+GLOB Entero digito <=> 20;
+GLOB Entero resultado <=> Inv sumaDigitos{Entero digito};
+Inv pinte{Entero resultado}
+    
+

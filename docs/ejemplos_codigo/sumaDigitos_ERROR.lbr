@@ -1,0 +1,13 @@
+Func sumaDigitos{Entero numero} -> 
+    LOC Entero suma <=> 0;
+    LOC Entero digito <=> 0;
+    Rep {numero ~== 0} ->
+        digito <=> Operar numero % 10;    
+        suma <=> digito;
+        numero <=> Operar numero // 10;
+    <-
+    messirve suma;
+<-
+
+    
+

@@ -1,0 +1,14 @@
+GLOB Flotante pi <=> 3.14;
+Func areaCirculo{Flotante radio} ->
+
+    #C error de inferencia 
+    LOC Flotante area <=> "a";
+    LOC Flotante operacion <=> Operar pi * radio ** 2;
+    LOC Flotante area1 <=> operacion;
+    messirve area;
+<-
+
+
+        
+    
+

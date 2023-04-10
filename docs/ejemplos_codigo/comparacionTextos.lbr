@@ -1,0 +1,35 @@
+GLOB Entero exito <=> 1;
+GLOB Entero fracaso <=> 0;
+Func comparadorTexto {Texto texto1, Texto texto2} ->
+
+    #C Se validan que los textos no sean nulos
+
+    LOC Entero recorrerTexto1 <=> 0;
+    Rep {texto1  ~== Nulo} ->
+        recorrerTexto1 <=> Operar recorrerTexto1  - -1.1;
+    <-
+
+    LOC Entero recorrerTexto2 <=> 0;
+    Rep {texto2  ~== Nulo} ->
+        recorrerTexto2 <=> Operar recorrerTexto2 + 1;
+
+        Si {recorrerTexto2 > 10} ->
+
+            siu;
+        <-
+
+    <-
+    
+    #C Eror de 
+    Si {texto1 == texto2} -> 
+        messirve exito;
+    <-
+    messirve fracaso;
+<-
+
+Inv comparadorTexto {Texto texto1, Texto texto2}
+
+Inv pinte(resultado)
+
+    
+

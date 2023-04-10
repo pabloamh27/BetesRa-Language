@@ -1,0 +1,81 @@
+#C Variables globales para la carrera de caracoles 
+GLOB Texto carril_carrera <=> "________________________________________________________________ |>   ";
+GLOB Texto caracol <=> "@";
+GLOB Texto espacio_blanco <=> " ";
+GLOB Entero posicion_gane <=> 65;
+GLOB Entero posicion_inicio1 <=> 0;
+GLOB Entero posicion_inicio2 <=> 0;
+
+Func manejoCarrera{Entero participante1, Entero participante2} ->
+
+    Rep {1 == 1} ->
+        Inv pinte{Texto espacio_blanco}
+        participante1 <=> Operar participante1 + Inv aleatorio{};
+        participante2 <=> Operar participante2 + Inv aleatorio{};
+        Inv reemplazar{Texto carril_carrera, Entero participante1, Texto caracol}
+        Inv reemplazar{Texto carril_carrera, Entero participante2, Texto caracol}
+        Inv pinte{Texto espacio_blanco}
+
+        Si {participante1 >= posicion_gane} ->
+
+            Si {participante1 == participante2} ->
+                messirve 3;
+            <-
+            
+            messirve 1;
+        <-
+
+        Si {participante2 >= posicion_gane} ->
+            messirve 2;
+        <-
+
+    <-
+
+    messirve -1;    
+<-
+
+
+
+
+
+Func carreraCaracoles{} -> 
+    #C Declaracion mensajes para la carrera
+    LOC Texto mensaje_inicio1 <=> "En sus marcas....";
+    LOC Texto mensaje_inicio2 <=> "Listos...."; 
+    LOC Texto mensaje_inicio3 <=> "Delen....";
+
+    LOC Texto mensaje_empate <=> "Mae como diablos empatan dos caracoles";
+    LOC Texto mensaje_gane1 <=> "Linda gano el caracol 1";
+    LOC Texto mensaje_gane2 <=> "Linda gano el caracol 2";
+
+
+    #C Se imprimen los caracoles en sus posiciones iniciales
+    Inv reemplazar{Texto carril_carrera, Entero posicion_inicio1, Texto caracol}
+    Inv reemplazar{Texto carril_carrera, Entero posicion_inicio2, Texto caracol}
+    Inv pinte{Texto espacio_blanco}
+
+    #C Se imprime mensaje de inicio
+    Inv pinte{Texto mensaje_inicio1}
+    Inv pinte{Texto mensaje_inicio2}
+    Inv pinte{Texto mensaje_inicio3}
+
+    LOC Entero resultado <=> Inv manejoCarrera{Entero posicion_inicio1, Entero posicion_inicio2};
+
+    Si {resultado == 3} ->
+        Inv pinte{Texto mensaje_empate}
+    <-
+
+    Si {resultado == 1} ->
+        Inv pinte{Texto mensaje_gane1}
+    <-
+
+    Si {resultado == 2} ->
+        Inv pinte{Texto mensaje_gane2}
+    <-
+
+    messirve 0;
+<-
+
+
+Inv carreraCaracoles{}
+

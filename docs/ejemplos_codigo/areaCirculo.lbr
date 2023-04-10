@@ -1,0 +1,12 @@
+GLOB Flotante pi <=> 3.14;
+Func areaCirculo{Flotante radio} -> 
+    LOC Flotante area <=> 0;
+    LOC Flotante operacion <=> Operar pi * radio ** 2;
+    LOC Flotante area1 <=> operacion;
+    messirve area;
+<-
+
+
+        
+    
+

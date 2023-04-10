@@ -1,0 +1,11 @@
+GLOB Entero resultado <=> 0; 
+Func factorialCondicional{ Entero numero } -> 
+	Rep {Operar numero - 1  > 0} ->
+		LOC Entero i <=> Operar numero + 1;
+		
+		#C Error de identificación 
+		resultado <=> Operar numero * i  + vaquita;
+		numero <=> Operar numero - 1;  
+	<-
+	messirve resultado; 
+<-
